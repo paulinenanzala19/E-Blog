@@ -3,9 +3,9 @@ from . import db
 
 
 class Quotes:
-    def __init__(self,author,quote):
-        self.author = author
+    def __init__(self,quote,author):
         self.quote = quote
+        self.author = author
 
 class User(db.Model):
     __tablename__='users'

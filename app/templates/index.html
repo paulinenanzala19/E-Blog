@@ -1,3 +1,23 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro %}
+
 <title>{{ title }}</title>
+
+{% block content%}
+<div class="container-fluid">
+    <div class="px-4 py-5 my-5 text-center">
+        <div class="col-lg-6 mx-auto">
+			<figure class="text-center text-pink">
+				<blockquote class="blockquote">
+					<p>{{ quotes.quote }}</p>
+				</blockquote>
+				<figcaption class="blockquote-footer">
+					<cite title="Source Title"> ~~{{quotes.author}}</cite>
+				</figcaption>
+			</figure>
+		</div>
+    </div>
+</div>
+{% endblock %}
 
 <h1>Hello world!</h1>
