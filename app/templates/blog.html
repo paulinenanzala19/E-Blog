@@ -6,6 +6,8 @@
             <h3>{{blog.title}}</h3>
             <hr>
             <p>{{blog.posts}}</p>
+            <a href="{{url_for('main.likes',id=blog.id)}}"><i class="fa fa-thumbs-up"></i>{{blog.upvote.count()}}</a>  |
+            <a href="{{url_for('main.dislikes',id=blog.id)}}"><i class="fa fa-thumbs-down"></i>{{blog.downvote.count()}}</a>  |
             <footer class="blockquote-footer text-center"> Posted by: ~~{{blog.user.username}}</footer>
            
             <br>
