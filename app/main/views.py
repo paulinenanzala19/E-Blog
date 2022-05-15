@@ -1,9 +1,9 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..models import Blog,User,Upvote,Downvote
+from ..models import Blog,User,Upvote,Downvote,Comments
 from ..request import get_quotes
 from flask_login import login_required,current_user
-from .forms import BlogForm,UpdateProfile
+from .forms import BlogForm,UpdateProfile,CommentForm
 from .. import db,photos
 
 @main.route('/')
@@ -113,7 +113,7 @@ def dislikes(id):
     return redirect(url_for('main.index',id = id))
 
 
-@main.route('/comment/<int:pitch_id>', methods = ['POST','GET'])
+@main.route('/comment/<int:blog_id>', methods = ['POST','GET'])
 @login_required
 def comment(blog_id):
   comments = Comments.query.filter_by(blog_id=blog_id).all()

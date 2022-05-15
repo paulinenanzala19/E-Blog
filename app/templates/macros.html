@@ -9,6 +9,7 @@
             <p>{{p.post | truncate(100)}}</p>
             <a href="{{url_for('main.likes',id=p.id)}}"><i class="fa fa-thumbs-up"></i>{{p.upvote.count()}}</a>  |
             <a href="{{url_for('main.dislikes',id=p.id)}}"><i class="fa fa-thumbs-down"></i>{{p.downvote.count()}}</a>
+            <a href="{{url_for('main.comment',blog_id=p.id)}}"><i class="fas fa-comments" style="padding-left: 3%; cursor: pointer;"></i>{{ p.comment.count()}}</a>
             
             <footer class="blockquote-footer text-center">~~ {{p.user.username}}</footer>
         </div>
