@@ -3,27 +3,47 @@
 {% block content %}
 <div class="container">
     <div class="row">
-
-        <div class="col-md-4">
-           <h3> {{user.username| capitalize}} </h3>
-
-    
-            {% if user.bio %}
-            <p> {{user.bio}}</p>
-            {%else%}
-            <p> {{user.username| capitalize}} has no bio </p>
-            {% endif %}
-        </div>
-
-  
-        <div class="col-md-4">
+        <div class="card">
 
             {% if user.profile_pic_path %}
             <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
             {%else%}
             <p>No profile picture</p>
             {% endif %}
+        
+
+            <div class="card-body">
+              <h3> {{user.username| capitalize}} </h3>
+
+    
+               {% if user.bio %}
+               <p> {{user.bio}}</p>
+               {%else%}
+               <p> {{user.username| capitalize}} has no bio </p>
+               {% endif %}
+               {% if user == current_user %}
+                <div class="profile">
+                    <div class="main">
+                        <button class="btn btn-sm btn-info" id="btn"><a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a></button>
+                        <button class="btn btn-sm btn-info" id="btn">upload image</button>
+
+                    </div>
+                    <div class="image">
+                        <form  action="{{url_for('main.upload_image',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+
+                            <input type="file"  name="photo" class="form-control" required>
+                            <input type="submit" class="btn btn-sm btn-info" style="font-weight: bolder;"id="btn">
+                        </form>
+                    </div>
+                </div>
+            </div>       
+
         </div>
+         
+        {% endif %}
+            </div>
+        </div>
+  
     </div>
 </div>
 {% endblock %}
