@@ -19,6 +19,9 @@ class User(UserMixin,db.Model):
     blogs = db.relationship('Blog', backref='user', lazy='dynamic')
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
+    upvote=db.relationship('Upvote',backref='user',lazy='dynamic')
+    downvote=db.relationship('Downvote',backref='user',lazy='dynamic')
+    comment=db.relationship('Comments',backref='user',lazy='dynamic')
 
     @property
     def password(self):
@@ -49,8 +52,9 @@ class Blog(db.Model):
     title = db.Column(db.String(255),nullable = False)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     post = db.Column(db.Text(), nullable = False)
-    upvote=db.relationship('Upvote',backref='pitch',lazy='dynamic')
-    downvote=db.relationship('Downvote',backref='pitch',lazy='dynamic')
+    upvote=db.relationship('Upvote',backref='blog',lazy='dynamic')
+    downvote=db.relationship('Downvote',backref='blog',lazy='dynamic')
+    comment=db.relationship('Comments',backref='blog',lazy='dynamic')
 
     def save_blog(self):
         db.session.add(self)
@@ -96,6 +100,27 @@ class Downvote(db.Model):
     def get_downvotes(cls,id):
         downvotes = cls.query.filter_by(blog_id=id).all()
         return downvotes
+
+class Comments(db.Model):
+    __tablename__='comments'
+    id = db.Column(db.Integer,primary_key = True)
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    comment = db.Column(db.Text(),nullable = False)
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,blog_id):
+        comments = Comments.query.filter_by(blog_id=pitch_id).all() 
+
+        return comments 
+
+    def __repr__(self):
+        return f'comment:{self.comment}'
+
    
 
    
