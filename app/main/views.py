@@ -15,6 +15,15 @@ def index():
 
     return render_template('index.html', title=title, quotes=random_quotes, post=blogs)
 
+@main.route('/blog/<int:blog_id>', methods = ['GET'])
+
+def blogs(blog_id):
+    form = CommentForm()
+    blog = Blog.query.get(blog_id)
+    # all_comments = Comment.query.filter_by(blog_id = blog_id).all()
+   
+    return render_template('blog.html', blog = blog)
+
 @main.route('/pitch/create', methods=['POST','GET'])
 @login_required
 def create_blog():

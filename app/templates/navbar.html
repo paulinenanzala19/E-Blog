@@ -12,6 +12,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Home</a></li>
+                     <li><a href="{{url_for('main.create_blog')}}">New Blog</a></li>
                   <ul class="nav navbar-nav navbar-right">
                   {% if current_user.is_authenticated %}
                   <li style="color:white;padding:15px;">{{current_user.username}}</li>
