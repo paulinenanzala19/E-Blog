@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="col-md-5" style="text-align: center;">
+        <div class="well well-lg" id="cat">
+            <h3>{{blog.title}}</h3>
+            <hr>
+            <p>{{blog.posts}}</p>
+            <footer class="blockquote-footer text-center"> Posted by: ~~{{blog.user.username}}</footer>
+           
+            <br>
+           
+        </div>
+    </div>
+{%endblock%}

@@ -24,7 +24,7 @@ def blogs(blog_id):
    
     return render_template('blog.html', blog = blog)
 
-@main.route('/pitch/create', methods=['POST','GET'])
+@main.route('/blog/create', methods=['POST','GET'])
 @login_required
 def create_blog():
     form=BlogForm()
@@ -34,7 +34,7 @@ def create_blog():
         user_id=current_user
         
         new_blog_object = Blog(post=post,user_id=current_user._get_current_object().id,title=title)
-        new_blog_object.save_pitch()
+        new_blog_object.save_blog()
         return redirect(url_for('main.index'))
         
     return render_template('newblog.html', form = form)
