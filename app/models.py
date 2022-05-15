@@ -14,6 +14,7 @@ class User(UserMixin,db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique = True,index = True)
     password_secure = db.Column(db.String(255))
     blogs = db.relationship('Blog', backref='user', lazy='dynamic')
     bio = db.Column(db.String(255))
@@ -47,7 +48,7 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255),nullable = False)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    blog = db.Column(db.Text(), nullable = False)
+    post = db.Column(db.Text(), nullable = False)
 
     def __repr__(self):
         return f'Blog {self.title}'
