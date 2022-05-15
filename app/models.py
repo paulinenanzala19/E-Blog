@@ -49,9 +49,53 @@ class Blog(db.Model):
     title = db.Column(db.String(255),nullable = False)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     post = db.Column(db.Text(), nullable = False)
+    upvote=db.relationship('Upvote',backref='pitch',lazy='dynamic')
+    downvote=db.relationship('Downvote',backref='pitch',lazy='dynamic')
+
+    def save_blog(self):
+        db.session.add(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'Blog {self.title}'
+
+class Upvote(db.Model):
+    __tablename__='upvotes'
+
+    id = db.Column(db.Integer,primary_key = True)
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+   
+
+
+    def save_upvote(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_upvotes(cls,id):
+        upvotes = cls.query.filter_by(blog_id=id).all()
+        return upvotes
+
+    def __repr__(self):
+        return f'{self.user_id}:{self.blog_id}'
+
+class Downvote(db.Model):
+    __tablename__='downvotes'
+
+    id = db.Column(db.Integer,primary_key = True)
+    blog_id = db.Column(db.Integer,db.ForeignKey('blogs.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+   
+
+    def save_downvote(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_downvotes(cls,id):
+        downvotes = cls.query.filter_by(blog_id=id).all()
+        return downvotes
    
 
    
