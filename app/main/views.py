@@ -112,3 +112,18 @@ def dislikes(id):
     new_downvote.save_downvote()
     return redirect(url_for('main.index',id = id))
 
+
+@main.route('/comment/<int:pitch_id>', methods = ['POST','GET'])
+@login_required
+def comment(blog_id):
+  comments = Comments.query.filter_by(blog_id=blog_id).all()
+  form = CommentForm()
+  if form.validate_on_submit():
+    comment = form.comment.data
+
+    new_comment_obj = Comments(comment=comment, blog_id=blog_id, user_id = current_user._get_current_object().id)
+
+    new_comment_obj.save_comment()
+    return redirect(url_for('main.comment', blog_id=blog_id))
+
+  return render_template('comment.html', form=form, comments=comments)
