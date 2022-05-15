@@ -2,16 +2,17 @@ from flask import render_template,request,redirect,url_for
 from . import main
 from ..request import get_quotes
 from flask_login import login_required
-from .forms import ReviewForm,UpdateProfile
+from .forms import BlogForm,UpdateProfile
 from .. import db,photos
 
 @main.route('/')
 def index():
     title='E-Blogs'
+    blogs=Blog.query.all()
     random_quotes=get_quotes()
 
 
-    return render_template('index.html', title=title, quotes=random_quotes)
+    return render_template('index.html', title=title, quotes=random_quotes, post=blogs)
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
