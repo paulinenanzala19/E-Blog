@@ -4,15 +4,46 @@ body{
     background-size: cover;
 }
 #posts{
-    margin-top: 7%;
+    margin-top: 2%;
+    
+}
+#cat{
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid palevioletred;
+    color: white;
+
 }
 #fluid{
     text-align: center;
-    /* border: 1px solid red; */
     width: 50%;
     margin-left: 25%;
-    margin-top: 4%;
-    font-size: 30px;
+    margin-top: 2%;
+    font-size: 35px;
     color: beige;
     font-weight: bolder;
+   font-family: 'Handlee', cursive;
+}
+#btn{
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid palevioletred;
+}
+#form{
+    color: palevioletred;
+
+}
+#header{
+    text-align: center;
+    color: palevioletred;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-top: 2%;
+    font-family: 'Handlee', cursive;
+}
+#postform{
+    color: palevioletred;
+}
+#comments{
+    color: palevioletred;
+    font-size: 20px;
+
 }

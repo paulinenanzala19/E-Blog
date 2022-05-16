@@ -20,7 +20,7 @@ def index():
 def blogs(blog_id):
     form = CommentForm()
     blog = Blog.query.get(blog_id)
-    # all_comments = Comment.query.filter_by(blog_id = blog_id).all()
+    
    
     return render_template('blog.html', blog = blog)
 
@@ -127,3 +127,42 @@ def comment(blog_id):
     return redirect(url_for('main.comment', blog_id=blog_id))
 
   return render_template('comment.html', form=form, comments=comments)
+
+@main.route('/<blog_id>/',methods=['GET','DELETE'])
+@login_required
+def delete_blog(blog_id):
+    deleteBlog = Blog.query.filter_by(id=blog_id).first()
+    if deleteBlog:
+        db.session.delete(deleteBlog)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    else:
+        pass
+    return redirect(url_for('main.index'))
+
+@main.route('/blog/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_blog(id):
+    
+    if not current_user:
+        abort(403)
+
+    blogposts = Blog.query.get(id)
+    form = BlogForm()
+
+    if form.validate_on_submit():
+
+        blogposts.title = form.title.data
+        blogposts.post = form.post.data
+        
+       
+        db.session.add(blogposts)
+        db.session.commit()
+
+        return redirect(url_for('main.index',id=blogposts.id))
+
+    form.title.data = blogposts.title
+    form.post.data = blogposts.post
+    
+
+    return render_template('newblog.html',action="Edit",form= form, update='Update Post')

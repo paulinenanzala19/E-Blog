@@ -7,9 +7,10 @@
 <div class="container-fluid">
     <div class="px-4 py-5 my-5 text-center">
         <div class="" id="fluid">
+			<h1>E-Blog</h1>
 			<figure class="text-center text-pink">
 				<blockquote class="blockquote">
-					<p>{{ quotes.quote }}</p>
+					<p style="font-size:25px;">{{ quotes.quote }}</p>
 				</blockquote>
 				<figcaption class="blockquote-footer">
 					<cite title="Source Title"> ~~{{quotes.author}}</cite>
@@ -18,6 +19,7 @@
 		</div>
     </div>
 </div>
+<header id="header">Trending Blogs</header>
 <div class="container" id="posts">
 	{{ macro.display(post)}}
 </div>

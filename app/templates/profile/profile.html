@@ -3,23 +3,23 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="card">
+        <div class="card" style="width:18rem ;">
 
             {% if user.profile_pic_path %}
             <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
             {%else%}
-            <p>No profile picture</p>
+            <p style="color:palevioletred ;">No profile picture</p>
             {% endif %}
         
 
             <div class="card-body">
-              <h3> {{user.username| capitalize}} </h3>
+              <h3 style="color:palevioletred ;" > {{user.username| capitalize}} </h3>
 
     
                {% if user.bio %}
                <p> {{user.bio}}</p>
                {%else%}
-               <p> {{user.username| capitalize}} has no bio </p>
+               <p style="color:palevioletred;"> {{user.username| capitalize}} has no bio </p>
                {% endif %}
                {% if user == current_user %}
                 <div class="profile">
