@@ -78,7 +78,7 @@ As a user I would like to:
 * CSS(Bootstrap)
 
 ## live link
-[]
+['https://nanzalablog.herokuapp.com/']
 
 ## known bugs
 Not any at the moment but am open to suggestion
