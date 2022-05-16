@@ -20,7 +20,7 @@ class CommentsModelTest(unittest.TestCase):
 class CommentsModelTest(unittest.TestCase):
     def setUp(self):
         self.user_jessy = User(username='jessy', password='pipi', email='jessy@test.com')
-        self.new_blog = Blog(id=1, title='Test', content='A test blog', user_id=self.user_jessy.id)
+        self.new_blog = Blog(id=1, title='Test', post='A test blog', user_id=self.user_jessy.id)
         self.new_comment = Comments(id=1, comment ='A test comment', user_id=self.user_jessy.id, blog_id = self.new_blog.id )
 
     def tearDown(self):
