@@ -5,7 +5,7 @@ from app import db
 
 class BlogModelTest(unittest.TestCase):
     def setUp(self):
-        self.user_Jessy = User(username='jessy', password='pipis', email='test@test.com')
+        self.user_jessy = User(username='jessy', password='pipis', email='jessy@test.com')
         self.new_blog = Blog(id=1, title='Test', post='test blog', user_id=self.user_jessy.id)
 
     def tearDown(self):
