@@ -19,7 +19,7 @@
                   <li><a href="{{url_for('main.profile',uname=current_user.username)}}" style="color:palevioletred; font-size: 20px;">My profile</a></li>
                   <li><a href="{{url_for('auth.logout')}}" style="color:palevioletred; font-size: 20px;">Sign out</a></li>
                   {% else %}
-                  <li><a href="{{url_for('auth.login')}}" style="color:palevioletred; font-size: 20px;">Sign in</a></li>
+                  <li><a href="{{url_for('auth.login')}}" style="color:palevioletred; font-size: 20px;"><i class="fas fa-sign-out-alt"></i>&nbsp; Sign in</a></li>
                   {%endif%}
                 </ul>
             </div>
