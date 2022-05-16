@@ -1,0 +1,18 @@
+body{
+    background-image: url('https://c0.wallpaperflare.com/preview/1001/681/66/macbook-primeshot-browny-cooky.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#posts{
+    margin-top: 7%;
+}
+#fluid{
+    text-align: center;
+    /* border: 1px solid red; */
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 4%;
+    font-size: 30px;
+    color: beige;
+    font-weight: bolder;
+}
