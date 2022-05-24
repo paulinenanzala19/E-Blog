@@ -6,7 +6,7 @@
         <div class="well well-lg" id="cat">
             <h4>{{p.title}}</h4>
             <hr>
-            <p>{{p.post | truncate(500)}} <a href="{{url_for('main.blogs',blog_id=p.id)}}" style="color:palevioletred">Read More</a></p>
+            <p>{{p.post | truncate(100)}} <a href="{{url_for('main.blogs',blog_id=p.id)}}" style="color:palevioletred">Read More</a></p>
             <a href="{{url_for('main.likes',id=p.id)}}"><i class="fa fa-thumbs-up"></i>{{p.upvote.count()}}</a>  |
             <a href="{{url_for('main.dislikes',id=p.id)}}"><i class="fa fa-thumbs-down"></i>{{p.downvote.count()}}</a>
             <a href="{{url_for('main.comment',blog_id=p.id)}}"><i class="fas fa-comments" style="padding-left: 3%; cursor: pointer;"></i>{{ p.comment.count()}}</a>  |
