@@ -25,4 +25,3 @@ class BlogModelTest(unittest.TestCase):
         self.new_blog.save()
         got_blog = Blog.get_blog(1)
         self.assertTrue(get_blog is not None)
-
